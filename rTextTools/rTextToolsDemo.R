@@ -33,6 +33,21 @@ analytics <-create_analytics(container, cbind(SVM_CLASSIFY, GLMNET_CLASSIFY))
 
 summary(analytics)
 
+##Create Confusion Matrix##
+table(true = analytics@document_summary$MANUAL_CODE, predict = analytics@document_summary$SVM_LABEL)
+table(true = analytics@document_summary$MANUAL_CODE, predict = analytics@document_summary$GLMNET_LABEL)
+
+# Plot SVM Recall to see which labels are poor##
+x <- as.numeric(rownames(analytics@algorithm_summary))[-20]
+y <- analytics@algorithm_summary$SVM_RECALL[-20]
+
+plot(x, y, type="l", lwd=3, main="Support Vector Machine Topic Accuracy", ylab="Recall Accuracy", xlab="Topic")
+abline(h=.75, lwd=2, col="maroon")
+text(x, y, adj=1.2)
+
+
+
+
 ##Create the data.fram Summaries##
 topic_summary <-analytics@label_summary
 alg_summary <- analytics@algorithm_summary
