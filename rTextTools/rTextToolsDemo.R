@@ -20,4 +20,16 @@ container <- create_container(doc_matrix, USCongress$major, trainSize=1:4000,tes
 ## Apply Support Vector Machine, glmnet and maximum entropy models ##
 SVM <- train_model(container,"SVM")
 GLMNET <- train_model(container,"GLMNET")
-MAXENT <- train_model(container,"MAXENT")
+
+###my computer didn't like the Max entropy model and kept crashing so I'm going to leave it out ##
+##MAXENT <- train_model(container,"MAXENT")##
+
+##Classifying...##
+SVM_CLASSIFY <-classify_model(container, SVM)
+GLMNET_CLASSIFY <-classify_model(container, GLMNET)
+
+
+
+
+
+
