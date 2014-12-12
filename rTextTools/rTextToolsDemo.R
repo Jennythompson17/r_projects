@@ -28,8 +28,15 @@ GLMNET <- train_model(container,"GLMNET")
 SVM_CLASSIFY <-classify_model(container, SVM)
 GLMNET_CLASSIFY <-classify_model(container, GLMNET)
 
+##Analysing output##
+analytics <-create_analytics(container, cbind(SVM_CLASSIFY, GLMNET_CLASSIFY))
 
+summary(analytics)
 
-
+##Create the data.fram Summaries##
+topic_summary <-analytics@label_summary
+alg_summary <- alaytics@algorithm_summary
+ens_summary <-analytics@ensemble_summary
+doc_summary <-analytics@document_summary
 
 
