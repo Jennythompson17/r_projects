@@ -39,4 +39,17 @@ alg_summary <- analytics@algorithm_summary
 ens_summary <-analytics@ensemble_summary
 doc_summary <-analytics@document_summary
 
+##Create ensember summary##
+create_ensembleSummary(analytics@document_summary)
+
+##Cross-validation##
+SVM <-cross_validate(container, 4, "SVM")
+GLMNET <-cross_validate(container, 4, "GLMNET")
+
+
+
+
+
+
+
 
